@@ -4,15 +4,21 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                echo 'Building...'
                 sh 'npm i'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Running Test Cases...'
             }
         }
 
         stage('Deploy') {
             steps {
-                sh 'npm i'
-                sh 'ls /var/www/html'
-//                 sh 'touch /var/www/html/abc.txt'
+                echo 'Deploying Changes...'
+                sh './scripts/deploy.sh'
             }
         }
     }

@@ -6,14 +6,26 @@ curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -
 apt install apache2 php nodejs git mongodb -y
 apt install npm -y
 chmod -R 755 /var/www/html
-cd /var/www/html
-rm -rf *
-git clone https://github.com/abr-eurus/node_passport_login.git
-cp -r node_passport_login/* .
-rm -rf node_passport_login
-cd /home/ubuntu
+rm -rf /var/www/html/
+cat <<EOT >> /lib/systemd/system/nodeapp.service
+[Unit]
+Description=Jenkins CI/CD test NodeJS App
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/var/www/html/
+ExecStart=/usr/bin/node /var/www/html/app.js
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+EOT
+
+systemctl daemon-reload
 apt install openjdk-8-jdk -y
 wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
-sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > \
+sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > \
     /etc/apt/sources.list.d/jenkins.list'
-sudo apt update && sudo apt install jenkins -y
+apt update && sudo apt install jenkins -y
