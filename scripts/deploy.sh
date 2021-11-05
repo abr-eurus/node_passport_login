@@ -1,4 +1,4 @@
 #!/bin/bash
 
 npm i
-systemctl restart nodeapp
+sudo systemctl restart nodeapp
