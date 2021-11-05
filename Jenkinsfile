@@ -11,7 +11,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh 'npm i'
-                sh 'touch /var/www/html/abc.txt'
+//                 sh 'touch /var/www/html/abc.txt'
             }
         }
     }
