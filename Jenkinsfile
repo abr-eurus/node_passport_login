@@ -19,7 +19,6 @@ pipeline {
             steps {
                 echo 'Deploying Changes...'
                 sh 'scp -i /home/ubuntu/ammar-KeyPair.pem nodeapp.tar.gz ubuntu@34.201.117.185:/home/ubuntu'
-//                 sh './scripts/deploy.sh'
             }
         }
     }
