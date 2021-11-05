@@ -10,7 +10,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'npm i && touch /var/www/html/abc.txt'
+                sh 'npm i && sudo touch /var/www/html/abc.txt'
             }
         }
     }
