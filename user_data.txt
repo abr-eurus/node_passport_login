@@ -1,0 +1,19 @@
+#!/bin/bash
+
+apt-get update -y
+apt install curl
+curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -
+apt install apache2 php nodejs git mongodb -y
+apt install npm -y
+chmod -R 755 /var/www/html
+cd /var/www/html
+rm -rf *
+git clone https://github.com/abr-eurus/node_passport_login.git
+cp -r node_passport_login/* .
+rm -rf node_passport_login
+cd /home/ubuntu
+apt install openjdk-8-jdk -y
+wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > \
+    /etc/apt/sources.list.d/jenkins.list'
+sudo apt update && sudo apt install jenkins -y

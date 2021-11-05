@@ -1,8 +1,5 @@
-# Node.js & Passport Login
+# Node.js & Jenkins Setup
 
-This is a user login and registration app using Node.js, Express, Passport, Mongoose, EJS and some other packages.
-
-### Version: 2.0.0
 
 ### Usage
 
@@ -18,6 +15,6 @@ $ npm run dev
 # Visit http://localhost:5000
 ```
 
-### MongoDB
+## Script
 
-Open "config/keys.js" and add your MongoDB URI, local or Atlas
+ Copy the script from "user_data.txt" file and paste it in user data section while launching instance.
