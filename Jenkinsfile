@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building...'
-                tar -czf nodeapp.tar.gz config models routes scripts views app.js package.json nodeapp.service
+                sh 'tar -czf nodeapp.tar.gz config models routes scripts views app.js package.json nodeapp.service'
             }
         }
 
@@ -18,8 +18,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying Changes...'
-                scp -i /home/ubuntu/ammar-KeyPair.pem nodeapp.tar.gz ubuntu@34.201.117.185:/home/ubuntu
-                sh './scripts/deploy.sh'
+                sh 'scp -i /home/ubuntu/ammar-KeyPair.pem nodeapp.tar.gz ubuntu@34.201.117.185:/home/ubuntu'
+//                 sh './scripts/deploy.sh'
             }
         }
     }
