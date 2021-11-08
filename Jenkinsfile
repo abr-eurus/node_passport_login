@@ -5,7 +5,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building...'
-                sh 'tar -czf nodeapp.tar.gz config models routes scripts views app.js package.json nodeapp.service'
+//                 sh 'tar -czf nodeapp.tar.gz config models routes scripts views app.js package.json nodeapp.service'
+                sh 'pwd'
                 sh 'ls'
             }
         }
