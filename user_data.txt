@@ -1,6 +1,8 @@
 #!/bin/bash
 
 apt-get update -y
+
+----------------------------------- NodeJS App -----------------------------------
 apt install curl
 curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -
 apt install apache2 php nodejs git mongodb -y
@@ -23,6 +25,8 @@ Restart=on-failure
 WantedBy=multi-user.target
 EOT
 
+
+----------------------------------- Jenkins Server -----------------------------------
 systemctl daemon-reload
 apt install openjdk-8-jdk npm -y
 wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
