@@ -6,19 +6,21 @@ pipeline {
             steps {
                 echo 'Building...'
                 sh 'tar -czf nodeapp.tar.gz config models routes scripts views app.js package.json nodeapp.service'
+                sh 'ls'
             }
         }
 
         stage('Test') {
             steps {
                 echo 'Running Test Cases...'
+                sh 'ls /home/ubuntu'
             }
         }
 
         stage('Deploy') {
             steps {
                 echo 'Deploying Changes...'
-                sh 'scp -i ubuntu@174.129.80.35:/home/ubuntu/ammar-KeyPair.pem nodeapp.tar.gz ubuntu@107.23.15.131:/var/www/html/'
+                sh 'scp -i /home/ubuntu/ammar-KeyPair.pem nodeapp.tar.gz ubuntu@107.23.15.131:/var/www/html/'
 //                 sh './scripts/deploy.sh'
             }
         }
