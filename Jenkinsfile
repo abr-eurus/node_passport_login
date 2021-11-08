@@ -21,7 +21,7 @@ pipeline {
             steps {
                 echo 'Deploying Changes...'
 //                 sh 'scp -i /home/ubuntu/am  mar-KeyPair.pem nodeapp.tar.gz ubuntu@107.23.15.131:/var/www/html/'
-                    sh 'rsync -e "ssh -i ammar-KeyPair.pem" -avzp ./ ubuntu@107.23.15.131:/var/www/html/'
+                    sh 'rsync -e "ssh -i /home/ubuntu/ammar-KeyPair.pem" -avzp ./ ubuntu@107.23.15.131:/var/www/html/'
 //                 sh './scripts/deploy.sh'
             }
         }
