@@ -24,13 +24,12 @@ Restart=on-failure
 [Install]
 WantedBy=multi-user.target
 EOT
-
+systemctl daemon-reload
 
 ----------------------------------- Jenkins Server -----------------------------------
-systemctl daemon-reload
 apt install openjdk-8-jdk npm -y
 wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
 sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > \
     /etc/apt/sources.list.d/jenkins.list'
 apt update && sudo apt install jenkins -y
-sh -c "echo 'jenkins ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers"
+sh -c "echo 'jenkins ALL=NOPASSWD:/usr/bin/rsync' >> /etc/sudoers"
