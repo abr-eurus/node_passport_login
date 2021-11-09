@@ -2,5 +2,5 @@
 
 URL_NODE_APP=54.221.132.176
 
-sudo rsync -avz -e "sudo ssh -o StrictHostKeyChecking=no -i /home/ubuntu/ammar-KeyPair.pem" ./ ubuntu@$URL_NODE_APP:/var/www/html
+rsync -avz -e "sudo ssh -o StrictHostKeyChecking=no -i /home/ubuntu/ammar-KeyPair.pem" --rsync-path='sudo rsync' ./ ubuntu@$URL_NODE_APP:/var/www/html
 sudo ssh  -o StrictHostKeyChecking=no -i /home/ubuntu/ammar-KeyPair.pem  ubuntu@$URL_NODE_APP 'sudo systemctl restart nodeapp'
